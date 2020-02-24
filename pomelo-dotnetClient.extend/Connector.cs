@@ -13,7 +13,7 @@ using Battlehub.Dispatcher;
 namespace Pomelo.Extend
 {
     /// <summary>
-    /// connect to server
+    /// connect to a pomelo server
     /// </summary> 
     public class Connector : MonoBehaviour
     {
@@ -50,7 +50,7 @@ namespace Pomelo.Extend
         }
 
         /// <summary>
-        /// connecting to server and request with default route
+        /// connect to server and response
         /// </summary>
         /// <param name="ip"></param>
         /// <param name="port"></param>
@@ -86,7 +86,7 @@ namespace Pomelo.Extend
         }
 
         /// <summary>
-        /// disconnecting to server
+        /// disconnect the client
         /// </summary>
         public void Disconnect()
         {  
@@ -99,11 +99,11 @@ namespace Pomelo.Extend
         }
 
         /// <summary>
-        /// listen msg from server
+        /// add event listener, process broadcast message
         /// </summary>
         /// <param name="eventName">eg: onReceive</param>
         /// <param name="action"></param>
-        public void Listen(string eventName, Action<JsonObject> action)
+        public void On(string eventName, Action<JsonObject> action)
         {
             m_Conn.on(eventName, (result) =>
             {
@@ -115,7 +115,7 @@ namespace Pomelo.Extend
         }
 
         /// <summary>
-        /// request to server
+        /// request server with a custom data and response
         /// </summary>
         /// <param name="route"></param>
         /// <param name="data"></param>
@@ -132,7 +132,7 @@ namespace Pomelo.Extend
         }
 
         /// <summary>
-        /// request to server
+        /// request server and response
         /// </summary>
         /// <param name="route"></param>
         /// <param name="action"></param>
@@ -148,7 +148,7 @@ namespace Pomelo.Extend
         }
 
         /// <summary>
-        /// notify to server
+        /// notify server without response
         /// </summary>
         /// <param name="route"></param>
         /// <param name="data"></param>
